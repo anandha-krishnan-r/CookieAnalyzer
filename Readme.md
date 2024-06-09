@@ -19,9 +19,10 @@ To use the Cookie Analyzer project, follow these steps:
     git clone https://github.com/anandha-krishnan-r/CookieAnalyzer
     ```
 2.  Navigate to the project directory `cd CookieAnalyzer` and make the Gradle wrapper executable.
-   ```bash
+   
+    ```bash
     chmod +x gradlew
-   ```
+    ```
 3. Execute the application with appropriate command-line arguments.  
 
    ##### On Unix-like(Mac-os) systems:
