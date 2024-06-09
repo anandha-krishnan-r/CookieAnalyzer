@@ -1,5 +1,6 @@
 package com.cookieanalyzer.execution.inputparser;
 
+import static java.lang.String.format;
 import static java.lang.String.join;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
@@ -9,8 +10,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 import com.cookieanalyzer.data.domain.UserInput;
 import com.cookieanalyzer.data.domain.ProcessType;
+import com.cookieanalyzer.exception.CookieAnalyzerException;
 import com.cookieanalyzer.execution.ApplicationExecutor;
 import com.cookieanalyzer.execution.InputParser;
 import org.slf4j.Logger;
@@ -23,6 +26,9 @@ public class CLIInputParser implements InputParser<String[]> {
 
     private static final Logger logger = LoggerFactory.getLogger(CLIInputParser.class);
 
+    private static final String FILE_PARAM = "-f";
+    private static final String DATE_PARAM = "-d";
+    private static final String PROCESS_PARAM = "-p";
 
     private static final String HYPHEN = "-";
 
@@ -40,30 +46,42 @@ public class CLIInputParser implements InputParser<String[]> {
         return parsedInputData;
     }
 
-    private UserInput parseToInputData(String[] rawInput){
+    private UserInput parseToInputData(String[] rawUserInput){
 
         UserInput userInput = new UserInput();
-        for (int i = 0; i < rawInput.length; i++) {
-            var currentParam = rawInput[i];
-            if(nonNull(currentParam) && currentParam.startsWith(HYPHEN)){
+        String keyParamHolder = null;
 
-                switch (purifyParam(currentParam)) {
-                case "-f" -> ofNullable(rawInput[++i])
-                                .ifPresent(userInput::setFilePath);
+        for(String currentParam: rawUserInput){
 
-                case "-d" -> ofNullable(rawInput[++i])
-                                .map(CLIInputParser::parseLocalDate)
-                                .ifPresent(userInput::setRequestedDate);
-
-                case "-p" -> ofNullable(rawInput[++i])
-                                .map(ProcessType::valueOf)
-                                .ifPresent(userInput::setProcessType);
-
-                }
+            if(currentParam.startsWith(HYPHEN)){
+                keyParamHolder = currentParam;
+            } else if (nonNull(keyParamHolder)){
+                assignInputData(keyParamHolder, currentParam, userInput);
+                keyParamHolder = null;
             }
+
         }
 
         return userInput;
+    }
+
+    public void assignInputData(String keyParam, String valueParam, UserInput userInput){
+
+        switch (purifyParam(keyParam)) {
+        case FILE_PARAM -> ofNullable(valueParam)
+                        .ifPresent(userInput::setFilePath);
+
+        case DATE_PARAM -> ofNullable(valueParam)
+                        .map(CLIInputParser::parseLocalDate)
+                        .ifPresent(userInput::setRequestedDate);
+
+        case PROCESS_PARAM -> ofNullable(valueParam)
+                        .map(ProcessType::valueOf)
+                        .ifPresent(userInput::setProcessType);
+
+        default -> logger.debug(format("Skipping invalid param %s with value %s", keyParam, valueParam));
+
+        }
     }
 
     private static LocalDate parseLocalDate(String dateString){
@@ -74,18 +92,17 @@ public class CLIInputParser implements InputParser<String[]> {
         List<String> missingParams = new ArrayList<>(3);
 
         if(isNull(userInput.getFilePath()) || userInput.getFilePath().isBlank())
-            missingParams.add("-f");
+            missingParams.add(FILE_PARAM);
 
         if(isNull(userInput.getRequestedDate()))
-            missingParams.add("-d");
+            missingParams.add(DATE_PARAM);
 
         if(isNull(userInput.getProcessType()))
-            missingParams.add("-p");
+            missingParams.add(PROCESS_PARAM);
 
         if(!missingParams.isEmpty()){
-            throw new RuntimeException(String.format("The mandatory params %s are missing", join(" ,", missingParams)));
+            throw new CookieAnalyzerException(format("The mandatory params %s are missing", join(" ,", missingParams)));
         }
-
     }
 
     private String purifyParam(String param){

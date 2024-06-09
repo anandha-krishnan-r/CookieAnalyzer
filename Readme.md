@@ -13,16 +13,15 @@ analyzing it based on user-specified criteria, and outputting the analysis resul
 ### Steps to run
 To use the Cookie Analyzer project, follow these steps:
 
-1. Clone [or] download the project repository to your local machine.
+1. Clone [or] Download the project repository to your local machine.
     
     ```bash
     git clone https://github.com/anandha-krishnan-r/CookieAnalyzer
     ```
 2.  Navigate to the project directory `cd CookieAnalyzer` and make the Gradle wrapper executable.
-   
-    ```bash
+   ```bash
     chmod +x gradlew
-    ```
+   ```
 3. Execute the application with appropriate command-line arguments.  
 
    ##### On Unix-like(Mac-os) systems:
@@ -37,7 +36,7 @@ To use the Cookie Analyzer project, follow these steps:
    <br>
    -d : date to analyze the cookie data
    <br>
-   -p: process to perform on the data
+   -p: process to perform on the data, eg : MOST_ACTIVE_COOKIE
 ### Contact
 For any queries please contact me through
 Email : anandhakrishnan.r@outlook.com 

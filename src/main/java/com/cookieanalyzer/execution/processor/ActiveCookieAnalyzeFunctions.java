@@ -11,6 +11,7 @@ import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 import com.cookieanalyzer.data.domain.CookieData;
 import com.cookieanalyzer.data.domain.UserInput;
+import com.cookieanalyzer.exception.CookieAnalyzerException;
 
 /**
  *  A class containing functions to analyze the cookie data.
@@ -29,7 +30,7 @@ public class ActiveCookieAnalyzeFunctions {
         final Long maxCookieCount = cookieCountsOnDay.values()
                         .stream()
                         .max(Comparator.naturalOrder())
-                        .orElseThrow(() -> new RuntimeException("No Cookie data found"));
+                        .orElseThrow(() -> new CookieAnalyzerException("No Cookie data found"));
 
         return cookieCountsOnDay.entrySet().stream()
                         .filter(cookieCountData -> maxCookieCount.equals(cookieCountData.getValue()))

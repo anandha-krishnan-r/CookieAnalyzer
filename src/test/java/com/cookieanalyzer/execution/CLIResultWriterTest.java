@@ -2,7 +2,6 @@ package com.cookieanalyzer.execution;
 
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -11,10 +10,8 @@ import java.util.Collections;
 import java.util.Set;
 import com.cookieanalyzer.execution.resultwriter.CLIResultWriter;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockedStatic;
 
 @Tag("Junit")
 public class CLIResultWriterTest extends JunitBaseTest {
@@ -32,7 +29,6 @@ public class CLIResultWriterTest extends JunitBaseTest {
 
 
     @Test
-    @DisplayName("")
     public void test_writeResult_input_isNotNull(){
         cliResultWriter.writeResult(Set.of(COOKIE_1, COOKIE_2));
 
@@ -40,7 +36,6 @@ public class CLIResultWriterTest extends JunitBaseTest {
     }
 
     @Test
-    @DisplayName("")
     public void test_writeResult_input_isEmpty(){
         cliResultWriter.writeResult(Collections.emptySet());
 

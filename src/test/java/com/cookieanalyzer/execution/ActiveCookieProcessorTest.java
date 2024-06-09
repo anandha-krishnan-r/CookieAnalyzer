@@ -11,7 +11,7 @@ import com.cookieanalyzer.data.domain.CookieData;
 import com.cookieanalyzer.data.domain.UserInput;
 import com.cookieanalyzer.data.domain.ProcessType;
 import com.cookieanalyzer.execution.processor.ActiveCookieAnalyzer;
-import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -19,13 +19,13 @@ import org.junit.jupiter.api.Test;
 public class ActiveCookieProcessorTest extends JunitBaseTest {
     private ActiveCookieAnalyzer activeCookieProcessor;
 
-    public ActiveCookieProcessorTest(){
+    @BeforeEach
+    public void setUp() {
         activeCookieProcessor = new ActiveCookieAnalyzer();
     }
 
 
     @Test
-    @DisplayName("")
     public void test_processData_only_one_active_cookie(){
         final List<CookieData> cookieDataList = getMockCookieData();
         var inputData = new UserInput(FILE_PATH, DAY_1_TIMESTAMP_1.toLocalDate(), ProcessType.MOST_ACTIVE_COOKIE);
@@ -38,7 +38,6 @@ public class ActiveCookieProcessorTest extends JunitBaseTest {
     }
 
     @Test
-    @DisplayName("")
     public void test_processData_multiple_active_cookie(){
         final List<CookieData> cookieDataList = getMockCookieData();
         var inputData = new UserInput(FILE_PATH, DAY_2_TIMESTAMP_1.toLocalDate(), ProcessType.MOST_ACTIVE_COOKIE);
@@ -51,8 +50,7 @@ public class ActiveCookieProcessorTest extends JunitBaseTest {
     }
 
     @Test
-    @DisplayName("")
-    public void test_processData_no_cookies_accessed(){
+    public void test_processData_empty_cookies_data(){
         final List<CookieData> cookieDataList = Collections.emptyList();
         var inputData = new UserInput(FILE_PATH, DAY_2_TIMESTAMP_1.toLocalDate(), ProcessType.MOST_ACTIVE_COOKIE);
 
@@ -65,7 +63,6 @@ public class ActiveCookieProcessorTest extends JunitBaseTest {
     }
 
     @Test
-    @DisplayName("")
     public void test_processData_every_cookies_accessed_exactly_once(){
         final List<CookieData> cookieDataList = getMockCookieData_singleOccurrence();
         var inputData = new UserInput(FILE_PATH, DAY_1_TIMESTAMP_1.toLocalDate(), ProcessType.MOST_ACTIVE_COOKIE);
