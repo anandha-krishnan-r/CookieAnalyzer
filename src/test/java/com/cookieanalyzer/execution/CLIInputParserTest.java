@@ -83,7 +83,7 @@ public class CLIInputParserTest extends JunitBaseTest {
 
         assertThat(exception)
                         .extracting(Exception::getMessage)
-                        .isEqualTo("The mandatory params -pt are missing");
+                        .isEqualTo("The mandatory params -p are missing");
 
     }
 
@@ -97,7 +97,7 @@ public class CLIInputParserTest extends JunitBaseTest {
 
         assertThat(exception)
                         .extracting(Exception::getMessage)
-                        .isEqualTo("The mandatory params -f ,-d ,-pt are missing");
+                        .isEqualTo("The mandatory params -f ,-d ,-p are missing");
 
     }
 

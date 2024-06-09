@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 public class JunitBaseTest {
     public static final String FILE_PARAM = "-f";
     public static final String DATE_PARAM = "-d";
-    public static final String PROCESS_TYPE_PARAM = "-pt";
+    public static final String PROCESS_TYPE_PARAM = "-p";
     public static final String FILE_PATH = "cookie-log-1.csv";
     public static final String DATE_STRING = "2018-12-09";
     public static final String MOST_ACTIVE_COOKIE = "MOST_ACTIVE_COOKIE";

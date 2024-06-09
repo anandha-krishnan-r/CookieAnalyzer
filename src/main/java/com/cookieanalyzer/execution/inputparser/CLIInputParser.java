@@ -55,7 +55,7 @@ public class CLIInputParser implements InputParser<String[]> {
                                 .map(CLIInputParser::parseLocalDate)
                                 .ifPresent(userInput::setRequestedDate);
 
-                case "-pt" -> ofNullable(rawInput[++i])
+                case "-p" -> ofNullable(rawInput[++i])
                                 .map(ProcessType::valueOf)
                                 .ifPresent(userInput::setProcessType);
 
@@ -80,7 +80,7 @@ public class CLIInputParser implements InputParser<String[]> {
             missingParams.add("-d");
 
         if(isNull(userInput.getProcessType()))
-            missingParams.add("-pt");
+            missingParams.add("-p");
 
         if(!missingParams.isEmpty()){
             throw new RuntimeException(String.format("The mandatory params %s are missing", join(" ,", missingParams)));
