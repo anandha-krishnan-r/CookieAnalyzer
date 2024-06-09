@@ -17,7 +17,7 @@ To use the Cookie Analyzer project, follow these steps:
 1. Clone the Repository: Clone [or] download the project repository to your local machine.
     
     ```bash
-    git clone <repo-url>
+    git clone https://github.com/anandha-krishnan-r/CookieAnalyzer
     ```
 2. Build the Project: Navigate to the project directory and build the project using Gradle
 
