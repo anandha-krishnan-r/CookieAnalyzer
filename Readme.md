@@ -13,7 +13,7 @@ analyzing it based on user-specified criteria, and outputting the analysis resul
 ### Steps to run
 To use the Cookie Analyzer project, follow these steps:
 
-1. Clone [or] Download the project repository to your local machine.
+1. Clone [or] Download [here](https://github.com/anandha-krishnan-r/CookieAnalyzer/archive/refs/heads/main.zip) the project repository to your local machine.
     
     ```bash
     git clone https://github.com/anandha-krishnan-r/CookieAnalyzer
