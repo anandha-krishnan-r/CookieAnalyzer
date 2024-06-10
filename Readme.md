@@ -39,6 +39,15 @@ To use the Cookie Analyzer project, follow these steps:
    <br>
    -p: process to perform on the data, eg : MOST_ACTIVE_COOKIE
 
+ ### Example Output  
+   ```bash
+    > Task :run
+    [main] INFO com.cookieanalyzer.execution.ApplicationExecutor - Starting execution
+    Result:
+    AtY0laUfhglK3lC7
+    [main] INFO com.cookieanalyzer.execution.ApplicationExecutor - Execution completed successfully!
+   ``` 
+
  ### Behind the scenes
  At a high level, the execution workflow is well abstracted for extensibility [ApplicationExecutor](src/main/java/com/cookieanalyzer/execution/ApplicationExecutor.java), which consists of the following steps:
   <br>
