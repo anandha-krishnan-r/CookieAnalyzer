@@ -40,7 +40,7 @@ To use the Cookie Analyzer project, follow these steps:
    -p: process to perform on the data, eg : MOST_ACTIVE_COOKIE
 
  ### Behind the scenes
- At a high level, the execution workflow is well astracted for extensibility [ApplicationExecutor](src/main/java/com/cookieanalyzer/execution/ApplicationExecutor.java), which consists of the following steps:
+ At a high level, the execution workflow is well abstracted for extensibility [ApplicationExecutor](src/main/java/com/cookieanalyzer/execution/ApplicationExecutor.java), which consists of the following steps:
   <br>
    1. Parse raw user request into a structured format using [CLIInputParser](src/main/java/com/cookieanalyzer/execution/inputparser/CLIInputParser.java)
   <br><br>
