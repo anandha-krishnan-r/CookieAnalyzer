@@ -46,9 +46,9 @@ To use the Cookie Analyzer project, follow these steps:
   <br><br>
    2. Fetch cookie data from data source, such as a CSV file, via [CsvLogFileFetcher](src/main/java/com/cookieanalyzer/execution/datafetcher/CsvLogFileFetcher.java)
   <br><br>
-   3. Analyze the cookie data to produce the user-requested result using {@link CookieDataAnalyzer} [ActiveCookieAnalyzer](src/main/java/com/cookieanalyzer/execution/processor/ActiveCookieAnalyzer.java)
+   3. Analyze the cookie data to produce the user-requested result using [ActiveCookieAnalyzer](src/main/java/com/cookieanalyzer/execution/processor/ActiveCookieAnalyzer.java)
   <br><br>
-   4. Output the result to the specified output stream, such as the console, with {@link ResultWriter} [CLIResultWriter](src/main/java/com/cookieanalyzer/execution/resultwriter/CLIResultWriter.java)
+   4. Output the result to the specified output stream, such as the console, with [CLIResultWriter](src/main/java/com/cookieanalyzer/execution/resultwriter/CLIResultWriter.java)
   
 ### Contact
 For any queries please contact me through
