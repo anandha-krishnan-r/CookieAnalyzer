@@ -38,6 +38,18 @@ To use the Cookie Analyzer project, follow these steps:
    -d : date to analyze the cookie data
    <br>
    -p: process to perform on the data, eg : MOST_ACTIVE_COOKIE
+
+ ### Behind the scenes
+ At a high level, the execution workflow [ApplicationExecutor](src/main/java/com/cookieanalyzer/execution/ApplicationExecutor.java) consists of the following steps:
+  <br>
+   1. Parse raw user request into a structured format using [CLIInputParser](src/main/java/com/cookieanalyzer/execution/inputparser/CLIInputParser.java)
+  <br><br>
+   2. Fetch cookie data from data source, such as a CSV file, via [CsvLogFileFetcher](src/main/java/com/cookieanalyzer/execution/datafetcher/CsvLogFileFetcher.java)
+  <br><br>
+   3. Analyze the cookie data to produce the user-requested result using {@link CookieDataAnalyzer} [ActiveCookieAnalyzer](src/main/java/com/cookieanalyzer/execution/processor/ActiveCookieAnalyzer.java)
+  <br><br>
+   4. Output the result to the specified output stream, such as the console, with {@link ResultWriter} [CLIResultWriter](src/main/java/com/cookieanalyzer/execution/resultwriter/CLIResultWriter.java)
+  
 ### Contact
 For any queries please contact me through
 Email : anandhakrishnan.r@outlook.com 
