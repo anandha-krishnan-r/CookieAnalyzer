@@ -11,7 +11,7 @@ analyzing it based on user-specified criteria, and outputting the analysis resul
 * Java 17 or above [install Java](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
 
 ### Steps to run
-To use the Cookie Analyzer project, follow these steps:
+To use the Cookie Analyzer project, execute these steps in terminal:
 
 1. Clone [or] Download [link](https://github.com/anandha-krishnan-r/CookieAnalyzer/archive/refs/heads/main.zip) the project repository to your local machine.
     
